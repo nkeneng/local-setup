@@ -120,5 +120,6 @@ stow fzf tmux config misc
 # Add source line to .zshrc
 print_step "Adding source line to .zshrc..."
 echo 'source ~/.includes.zsh' >> ~/.zshrc
+echo 'source ~/.nvm/nvm.sh' >> ~/.zshrc
 
 print_info "Installation complete. Please restart your terminal or run 'source ~/.zshrc' to apply the changes."
