@@ -124,6 +124,10 @@ cd ~/dotfiles
 print_step "Stowing dotfiles..."
 stow fzf tmux config misc
 
+# Install tmux plugins 
+cd ~/.tmux/plugins/tpm/scripts && ./install_plugins.sh
+cd -
+
 # Add source line to .zshrc
 print_step "Adding source line to .zshrc..."
 echo 'source ~/.includes.zsh' >> ~/.zshrc
