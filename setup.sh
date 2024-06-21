@@ -29,7 +29,7 @@ sudo apt update
 
 # Install utilities
 print_step "Installing utilities..."
-sudo apt install -y curl wget git vim nano zsh sudo python3 python3-pip gcc fontconfig unzip ripgrep fzf fd-find jq stow expect gpg
+sudo apt install -y curl wget git vim nano zsh sudo python3 python3-pip gcc fontconfig unzip ripgrep fzf fd-find jq stow expect gpg file
 
 # Install Oh My Zsh using expect to handle the prompt
 print_step "Installing Oh My Zsh..."
@@ -109,9 +109,16 @@ print_step "Ensuring SSH directory exists and adding GitHub to known hosts..."
 mkdir -p ~/.ssh
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
+#Install yazi
+print_step "Installing yazi..."
+wget -qO yazi.zip https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip
+unzip -q yazi.zip -d yazi-temp
+sudo mv yazi-temp/*/yazi /usr/local/bin
+rm -rf yazi-temp yazi.zip
+
 # Clone dotfiles repository
 print_step "Cloning dotfiles repository..."
-git clone https://github.com/nkeneng/dotfiles.git
+git clone --recursive https://github.com/nkeneng/dotfiles.git
 
 cd ~/dotfiles
 print_step "Stowing dotfiles..."
