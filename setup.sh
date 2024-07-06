@@ -17,6 +17,8 @@ print_error() {
     echo -e "\033[1;31m$1\033[0m"
 }
 
+apt install wget curl xz-utils -y
+
 # Install Nix package manager
 print_step "Installing Nix package manager..."
 sh <(curl -L https://nixos.org/nix/install) --daemon --yes
@@ -33,7 +35,7 @@ echo 'export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH
 
 # Install utilities using Nix
 print_step "Installing utilities with Nix..."
-nix-env -iA nixpkgs.curl nixpkgs.wget nixpkgs.git nixpkgs.vim nixpkgs.nano nixpkgs.zsh nixpkgs.python3 nixpkgs.python3Packages.pip nixpkgs.gcc nixpkgs.fontconfig nixpkgs.unzip nixpkgs.ripgrep nixpkgs.fzf nixpkgs.fd nixpkgs.jq nixpkgs.stow nixpkgs.expect nixpkgs.gnupg nixpkgs.yazi
+nix-env -iA nixpkgs.git nixpkgs.vim nixpkgs.nano nixpkgs.zsh nixpkgs.python3 nixpkgs.python3Packages.pip nixpkgs.gcc nixpkgs.fontconfig nixpkgs.unzip nixpkgs.ripgrep nixpkgs.fzf nixpkgs.fd nixpkgs.jq nixpkgs.stow nixpkgs.expect nixpkgs.gnupg nixpkgs.yazi
 
 # Install Oh My Zsh using expect to handle the prompt
 print_step "Installing Oh My Zsh..."
