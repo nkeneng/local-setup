@@ -17,6 +17,23 @@ print_error() {
     echo -e "\033[1;31m$1\033[0m"
 }
 
+# Set environment variables for Nix
+#export NIX_REMOTE=daemon
+export NIX_CONF_DIR=/etc/nix
+export NIX_PATH=nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs
+export NIXPKGS_ALLOW_UNFREE=1
+export NIXPKGS_ALLOW_BROKEN=1
+
+# Ensure the Nix configuration directory exists
+print_step "Creating Nix configuration directory..."
+sudo mkdir -p /etc/nix
+
+# Disable syscall filtering in Nix
+print_step "Disabling syscall filtering in Nix..."
+echo "sandbox = false" | sudo tee /etc/nix/nix.conf
+echo "filter-syscalls = false" | sudo tee -a /etc/nix/nix.conf
+
+
 apt install wget curl xz-utils -y
 
 # Install Nix package manager
@@ -91,10 +108,6 @@ nix-env -iA nixpkgs.lazygit
 print_step "Installing tmux..."
 nix-env -iA nixpkgs.tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Setup Fd command
-print_step "Setting up fd command..."
-echo "alias fd='fdfind'" >> ~/.zshrc
 
 # Ensure SSH directory exists and add GitHub to known hosts
 print_step "Ensuring SSH directory exists and adding GitHub to known hosts..."
