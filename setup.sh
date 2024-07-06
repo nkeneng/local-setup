@@ -66,10 +66,6 @@ rm ~/.local/share/fonts/JetBrainsMono.zip
 print_step "Installing bat..."
 nix-env -iA nixpkgs.bat
 
-# Add alias to .zshrc
-print_info "Adding alias for bat to .zshrc..."
-echo "alias bat='batcat'" >> ~/.zshrc
-
 # Install Node.js via nvm
 print_step "Installing Node.js via nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
