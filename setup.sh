@@ -107,7 +107,7 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # Clone dotfiles repository
 print_step "Cloning dotfiles repository..."
-git clone https://github.com/nkeneng/dotfiles.git
+git clone --recurse-submodules https://github.com/nkeneng/dotfiles.git ~/dotfiles
 
 cd ~/dotfiles
 print_step "Stowing dotfiles..."
