@@ -46,12 +46,12 @@ sudo chsh -s $(which zsh) $(whoami)
 
 # Install Neovim
 print_step "Installing Neovim..."
-cd && curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+cd && curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
-export PATH="$PATH:/opt/nvim-linux64/bin"
-rm nvim-linux64.tar.gz
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+rm nvim-linux-x86_64.tar.gz
 
 # Install Nerd Fonts
 print_step "Installing Nerd Fonts..."
